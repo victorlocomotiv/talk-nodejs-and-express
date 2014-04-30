@@ -1,7 +1,7 @@
 {
-  "title": "Talk template",
-  "description": "My awesome talk description",
-  "author": "Tiago Garcia",
-  "email": "tgarcia@avenuecode.com",
-  "date": "Feb 11th, 2014"
+  "title": "NodeJS and Express",
+  "description": "Where our journey through \"MEAN stack\" begins.",
+  "author": "Victor Gomes",
+  "email": "vgomes@avenuecode.com",
+  "date": "May 1st, 2014"
 }
