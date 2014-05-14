@@ -46,7 +46,7 @@ You should just edit the source file at src/README.md - the one which stars with
 
  - Node.js is a platform built on *Chrome's JavaScript runtime* (V8) for easily building fast, Node.js was written almostly all in C
  - The back-end you'll be writen will be only in *javascript*
- - non-blocking I/O, one small request doesn't need too wait for the server deliver one fat request before response
+ - non-blocking I/O, one small request doesn't need to wait for the server deliver one fat request before response
  - Scalable network applications
  - Event-driven
  - Real time apllications, through websockets (*socket.io*)
