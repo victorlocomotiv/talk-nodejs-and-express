@@ -8,7 +8,8 @@ You should just edit the source file at src/README.md - the one which stars with
 
 ## @@title
 
-<img src="img/cover.jpg" class="logo" />
+<img src="img/logonodejs.png" class="logo" style="border: none;" />
+<img src="img/logoexpress.png" class="logo" style="border: none;" />
 
 @@author @ [Avenue Code](http://www.avenuecode.com)
 
@@ -20,213 +21,209 @@ You should just edit the source file at src/README.md - the one which stars with
 
 ## Agenda
 
- - The template
-  - Installing
-  - Working
-  - Deploying
- - Your talk
-  - Organization
-  - Content requirements
-  - Communication requirements
-  - The DONT's
-  - Tips
-  - If you are recording
-
-----
-
-## Agenda
-
- - Contributing
- - Learn more
- - Conclusion
- - Assignment
+- NodeJS
+  - Warm up with Node.js
+- ExpressJS
+  - Working with Express
+  - Express Project Files
+  - package.json
+  - request methods
+  - response methods
+  - Views with Jade
+  - Views with EJS
+  - nodemon
 
 ---
 
 ## Prerequisites
 
-- Markdown
-- Reveal.js
-- Grunt
+- JavaScript Knowledge
+- Have [Node.JS](http://nodejs.org) installed
 
 ---
 
-## The template
+## Let's talk about Node.js
 
-1. The Avenue Code talk template is a responsive, web-based talk template.
-1. This template is based on [Reveal.JS](http://lab.hakim.se/reveal-js).
-1. All you need to do is to write your content in [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
-1. There are some [Grunt](http://gruntjs.com) jobs to automatize the build process.
-1. It has *automatic code highlighting*, guessing the programming language you used.
-1. Once it is described in *README.md*, the talk contents will also be available as the repository description which is a common format for tutorials.
+ - Node.js is a platform built on *Chrome's JavaScript runtime* (V8) for easily building fast, Node.js was written almostly all in C
+ - The back-end you'll be writen will be only in *javascript*
+ - non-blocking I/O, one small request doesn't need too wait for the server deliver one fat request before response
+ - Scalable network applications
+ - Event-driven
+ - Real time apllications, through websockets (*socket.io*)
+ - Node.js have a powerfull Packager Manager, named *NPM*
+ - Perfect for data-intensive real-time applications that run across distributed devices
 
-----
+---
 
-## Setting up your repo
+## Warm up with Node.js
 
-1. Sign in on GitHub
-1. Fork the repository <https://github.com/acbr/talk-template>
-1. Rename it to match your talk name (ex: *talk-design-patterns*)
-1. Clone this repository
-1. Navigate to its folder on the terminal
+1. Let's write our first Node.js webserver
+```sh
+var http = require("http");
+http.createServer(function(request, response) {
+ response.writeHead(200);
+ response.write("Hello world, this is my first webserver");
+ response.end();
+}).listen(8800);
+console.log("Webserver started");
+```
+2. Save as *webserver.js* and run it
+```sh
+$ node webserver.js
+```
 
-----
+---
 
-## Building and running
+## Express Framework Description
 
-1. Install [Node.js](http://nodejs.org/)
-1. Install [Grunt](http://gruntjs.com/getting-started#installing-the-cli)
-1. On the repo folder, install the npm dependencies
+This Node.js module is a fast, unopinionated, minimalist web development framework inspired by Sinatra. The Express philosophy is to provide small, robust tooling for HTTP servers. Making it a great solution for single page applications, web sites, hybrids, or public HTTP APIs. Built on Connect you can use only what you need, and nothing more, applications can be as big or as small as you like, even a single file. Express does not force you to use any specific ORM or template engine. With support for over 14 template engines via Consolidate.js you can quickly craft your perfect framework.
+
+---
+
+## Working with Express
+
+1. Install express
+```sh
+# npm install -g express
+```
+2. Create a new project
+```sh
+$ mkdir new_project && cd new_project
+$ express
+```
+3. Install dependencies
 ```sh
 $ npm install
 ```
-1. Build it, serve it and monitor source files for changes
+4. Run new_project
 ```sh
-$ grunt
+$ node app
+or
+$ npm start
 ```
-1. Open <http://localhost:8000> to view your talk
-
-----
-
-## Working
-
-1. Open up *config.json* and fill your talk data such as title, author, email, date and description.
-  - That is the *ONLY FILE* you should edit on the project root!
-1. Any further change you will do is inside the *src* folder, such as:
-  - *src/README.md* to write your talk content in *Markdown*
-  - *src/index.html* to modify the HTML
-1. Grunt will generate files on the project root as you change *src*.
-1. In order to separate slides horizontally, use 3 dashes (---).
-1. In order to separate slides vertically, use 4 dashes (----).
-1. In order to *call out attention*, put an asterisk around your text:
-```
-In order to *call out attention*, ...
-```
-
-----
-
-## Deploying
-
-1. Make sure your build is not breaking.
-  - You should see *Done, without errors.* in the terminal.
-1. *git add*, *git commit* and *git push* to *gh-pages* branch.
-1. You should see your talk in an address like:
-  - http://*your-github-username*.github.io/*your-repo-name*
-  - Ex: <http://acbr.github.io/talk-template>
+5. Visit http://localhost:3000/
 
 ---
 
-## Your talk
+## Express project files
 
- - Should last no more than 50 minutes, leave up to 10 minutes for questions.
- - Should not be too deep neither too superficial.
- - Give at least 3 reference links to be followed for further studies.
- - Give a challenge that would be solved using ideas that were covered on the talk.
- - It is ok to go a little bit far (forcing the attendee to do some research), but that should be optional.
-
-----
-
-## Organization
-
- - 1st slide: the cover, featuring your talk name, your name, the lecture date and AC logo.
- - 2nd slide: the agenda, in topics.
- - 3nd slide: the prerequisites of your talk.
- - From 4th slide on: your content
-  - When content from the same topic doesn't fit on a slide -> grow it *VERTICALLY* by adding a slide below (----).
-  - When you finish a topic and will start a different one -> grow it *HORIZONTALLY* by adding a slide to the right (---).
- - The 3 last slides: Conclusion, Learn more (with the reference links) and Challenge.
-
-----
-
-## Content requirements
-
-1. *BE CONSISTENT*. Master the subject and do not contradict yourself.
-1. *CATCH THE ATTENTION*. Let the audience know WHY they cannot live one more day without this technology.
-1. *BALANCE THEORY AND PRACTICE*. Your target is keeping the subject interesting for everybody.
-1. *BE CONCISE*. Don't overexplain in such way you could cause confusion to your attendees.
-1. *KEEP THE FOCUS*. Off-topic discussions are ok, but only if it doesn't disturb the natural flow of your content.
-1. *BE PREPARED*. If you are going to use examples or live coding, make sure you have them all prepared beforehand.
-
-----
-
-## Communication requirements
-
-1. *COMMUNICATE WELL*. Be sharp on English, no bad words or slangs and use the best words for the audience.
-1. *BE A PRO*. Please watch some good screencasts in order to learn how to use your voice and conduct the talk.
-1. *BE POLITE*. Be respectful and avoid heavy criticism.
-1. *BE PROFESSIONAL*. Use jokes and humor with parsimony.
-1. *TRAIN* your full talk at least once before your talk.
-
-----
-
-## The DONT's
-
-1. *DO NEVER SHOW PRIVATE CODE FROM THE CLIENT*. This is CRITICAL and can cause serious problems.
-1. *DON'T BE ARROGANT*. Be humble and don't focus the talk on yourself.
-1. *DON'T GENERALIZE*, specially stuff that you are not sure about.
-1. *DON'T MAKE UP DATA*. Base yourself on trustable references.
-1. *DON'T TALK LIKE A ROBOT*. Just be yourself, natural. Relax :)
-
-----
-
-## Tips
-
- - *ENJOY* your experience by creating the talk, because you will surely learn MUCH MORE than your attendees.
- - *BRING WATER* to drink while you present. You will certainly need it!
- - *BE OPEN* to receive questions and even criticism. You will learn a lot from them.
- - *ALWAYS* be polite when talking to your audience. This will always open doors for you.
- - People might come to you with questions and more complex cases after your talk. Consider it as a gift, it means you represent something good for them!
-
-----
-
-## If you are recording
-
-- Make sure you use a professional microphone when available.
-- Don't do *drastic transitions* on your screen, as the recorded amount of frames per second is low.
-- Ask atendees to only make questions on the end - so future watchers will just get the real content without interruption.
-- Introduce yourself: "Hello everybody, my name is xxxx, I work for Avenue Code and today's talk will be about yyyyy". Finish it like: "That's it, thanks for watching.".
-- Problems with recording/connection? Always restart from the beginning of the slide. Don't try to restart from where it fails, its impossible to do a clean cut on the video after that.
+ - app.js
+ - pachage.json
+ - routes/
+  - index.js
+  - user.js
+ - views/
+  - index.jade
+  - layout.jade
+ - public/
+  - images/
+  - javascripts/
+  - stylesheets/
 
 ---
 
-## Contributing
+## package.json
 
-Should you wish to contribute, please be welcome to!
+```sh
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~3.5.1",
+    "jade": "*"
+  }
+}
+```
+ - Dependency's semantic version [major][minor][patch]
+   - "*" means it will always get the latest version available
+   - "3.5.x", "3.5.*", "~3.5.0" will update only patchs of 3.5
+   - "~3.5" means it will update till version 3.9 
+   - Whatch out "~3.5.*" updates from 3.5.0 to 3.9.9
 
-1. Fork the repository <https://github.com/acbr/talk-template>
-1. Create a feature branch for your contribution
+---
+
+## request methods
+ - app.js
+   - get(req, res)
+   - post(req, res)
+   - put(req, res)
+   - delete(req, res)
+
+---
+
+## response methods
+ - response.send('Return any string');
+ - response.render('index');
+ - response.json( { field: value } );
+ - response.redirect('/');
+
+---
+
+## Views with Jade
+
+ - Express by default uses Jade as template engine
+   - In Jade indentation matters
+   - Jade don't allow you to mix spaces and tabs indentation
+   - In Jade you don't close tags, so it make easier to handle your front-end code
+   - Jade can include view parts
+   - Jade looks a lot like Ruby Slim (template engine for Ruby on Rails), but it's not the same thing!
+
+---
+
+## Using pure html template engine (EJS)
+
+ - install and add EJS to your package.json
 ```sh
-git checkout -b my-new-feature
+$ npm install ejs --save
 ```
-1. Commit your changes
+ - Change the defaut template engine at yours app.js, from:
 ```sh
-git commit -am 'Add some feature'
+app.set('view engine', 'jade');
 ```
-1. Push to the branch
+ - to:
 ```sh
-git push origin my-new-feature
+app.set('view engine', 'ejs');
 ```
-1. Create a Pull Request
+ - Or, you could just start a new express project with EJS:
+ ```sh
+$ express --ejs
+```
+
+---
+
+## nodemon
+
+ - Nodemon watch your project files for change, everytime you change your code it will restart the node server for you.
+1. Install nodemon globaly
+```sh
+$ npm install -g nodemon
+```
+2. Change new_project start service to use nodemon instead node, at package.json
+```sh
+"scripts": {
+    "start": "nodemon app.js"
+}
+```
+3. Start new_project
+```sh
+$ npm start
+```
 
 ---
 
 ## Conclusion
 
-- This talk template rocks!
-- Your life should be easier now.
+- Express will really help you to start an RESTfull API easily.
+- MEAN stack is an new concept to fast delivery a system prototype, making use of MongoDB, Express, Angular JS and Node JS.
 
 ---
 
 ## Learn more
 
-1. [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-1. [Reveal.JS](https://github.com/hakimel/reveal.js)
-1. [Grunt](http://gruntjs.com)
-
----
-
-## Challenge
-
-1. Make your awesome talk based on this template.
-1. Push it to a gh-pages branch on your GitHub account.
-1. Share the URL with the world!
+1. [ExpressJS API Reference](http://expressjs.com/4x/api.html)
+2. [ExpressJS at Github](https://github.com/visionmedia/express)
+3. [ExpressJS MVC template](https://github.com/visionmedia/express/tree/master/examples/mvc)
