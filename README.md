@@ -15,7 +15,7 @@ Victor Gomes @ [Avenue Code](http://www.avenuecode.com)
 
 *vgomes@avenuecode.com*
 
-May 15th, 2014
+May 1st, 2014
 
 ---
 
