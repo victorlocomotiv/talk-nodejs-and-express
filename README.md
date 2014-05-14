@@ -108,7 +108,7 @@ $ npm start
 ## Express project files
 
  - app.js
- - pachage.json
+ - package.json
  - routes/
   - index.js
   - user.js
