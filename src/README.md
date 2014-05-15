@@ -45,7 +45,7 @@ You should just edit the source file at src/README.md - the one which stars with
 ## Let's talk about Node.js
 
  - Node.js is a platform built on *Chrome's JavaScript runtime* (V8) for easily building fast, Node.js was written almostly all in C
- - The back-end you'll be writen will be only in *javascript*
+ - Create a *back-end written in javascript*
  - non-blocking I/O, one small request doesn't need to wait for the server deliver one fat request before response
  - Scalable network applications
  - Event-driven
@@ -76,7 +76,7 @@ $ node webserver.js
 
 ## Express Framework Description
 
-This Node.js module is a fast, unopinionated, minimalist web development framework inspired by Sinatra. The Express philosophy is to provide small, robust tooling for HTTP servers. Making it a great solution for single page applications, web sites, hybrids, or public HTTP APIs. Built on Connect you can use only what you need, and nothing more, applications can be as big or as small as you like, even a single file. Express does not force you to use any specific ORM or template engine. With support for over 14 template engines via Consolidate.js you can quickly craft your perfect framework.
+This Node.js module is a fast, unopinionated, *minimalist* web development *framework inspired by Sinatra*. The Express philosophy is to provide *small*, *robust* tooling for *HTTP servers*. Making it a great solution for single page applications, web sites, hybrids, or public HTTP APIs. Built on Connect you can use only what you need, and nothing more, applications can be as big or as small as you like, even a single file. Express does not force you to use any specific ORM or template engine. With support for over 14 template engines via Consolidate.js you can quickly craft your perfect framework.
 
 ---
 
@@ -98,8 +98,7 @@ $ npm install
 4. Run new_project
 ```sh
 $ node app
-or
-$ npm start
+or $ npm start
 ```
 5. Visit http://localhost:3000/
 
@@ -284,8 +283,8 @@ exports.delete = function(req, res) {
 
  - Express by default uses Jade as template engine
    - In Jade indentation matters
-   - Jade don't allow you to mix spaces and tabs indentation
-   - In Jade you don't close tags, so it make easier to handle your front-end code
+   - Jade doesn't allow you to mix spaces and tabs indentation
+   - In Jade you don't close tags, so it makes it easier to handle your front-end code
    - Jade can include view parts
    - Jade looks a lot like Ruby Slim (template engine for Ruby on Rails), but it's not the same thing!
 
@@ -351,7 +350,7 @@ $ npm start
 ## CHALLENGE
 
 - To create your own user API with express you will need to keep the data somewhere, in this challenge you need to implement a database.
- 1. Create a new project as you learn here, with the user's API requests setted at app.js
+ 1. Create a new project as you learn here, with the user's API requests set at app.js
  2. Implement any database of any kind you want, you choose, MongoDB, MySQL, SQL, NoSQL, Graph, SQLlite, whatever...
 &nbsp;
 - *TIP:*  for fast development/prototyping I would recommend you to keep on the MEAN Stack and use *MongoDB* through *mongoose*, you can find some *examples below slide 10*
