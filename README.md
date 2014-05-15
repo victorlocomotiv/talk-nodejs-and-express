@@ -148,18 +148,135 @@ $ npm start
 
 ## request methods
  - app.js
-   - get(req, res)
-   - post(req, res)
-   - put(req, res)
-   - delete(req, res)
+   - app.get(req, res)
+```sh
+app.get('/api/users', user.list);
+app.get('/api/users/:id', user.get);
+```
+   - app.post(req, res)
+```sh
+app.post('/api/users', user.create);
+```
+   - app.put(req, res)
+```sh
+app.put('/api/users/:id', user.update);
+```
+   - app.delete(req, res)
+```sh
+app.delete('/api/users/:id', user.delete);
+```
 
 ---
 
 ## response methods
  - response.send('Return any string');
- - response.render('index');
- - response.json( { field: value } );
  - response.redirect('/');
+ - response.render('index');
+   - routes/index.js response example:
+```sh
+exports.index = function(req, res){
+  res.render('index', { title: 'Avenue Code' });
+};
+```
+ - response.json( { attribute: value } );
+   - routes/user.js API examples with mongoose *below*
+
+----
+
+## 1/5 - list
+```sh
+exports.list = function(req, res) {
+  User
+    .find()
+    .exec(function(err, users) {
+      if(err) {
+        console.log(err);
+      } else  {
+        res.json(users);
+      }
+    });
+};
+```
+
+----
+
+## 2/5 - get
+```sh
+exports.get = function(req, res) {
+  var id = req.params.id;
+  User
+    .findOne({_id: id})
+    .exec(function(err, users) {
+      if(err) {
+        console.log(err);
+        res.json(err);
+      } else  {
+        res.json(users);
+      }
+    });
+}
+```
+
+----
+
+## 3/5 - create
+```sh
+exports.create = function(req, res) {
+  var data = req.body;
+  var dados = {
+    name: data.name,
+    email: data.email,
+    password: data.password
+  }
+  var user = new User(dados);
+  user.save(function(err, data) {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+}
+```
+
+----
+
+## 4/5 - update
+```sh
+exports.update = function(req, res) {
+  var id = req.params.id;
+  var data = req.body;
+  var dados = {
+    name: data.name,
+    email: data.email,
+    password: data.password
+  }
+  User.update({_id: id}, dados, function(err, data) {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+}
+```
+
+----
+
+## 5/5 - delete
+```sh
+exports.delete = function(req, res) {
+  var id = req.params.id;
+  User.remove({_id: id}, function(err, data) {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  })
+}
+```
+
 
 ---
 
@@ -227,3 +344,17 @@ $ npm start
 1. [ExpressJS API Reference](http://expressjs.com/4x/api.html)
 2. [ExpressJS at Github](https://github.com/visionmedia/express)
 3. [ExpressJS MVC template](https://github.com/visionmedia/express/tree/master/examples/mvc)
+3. [Mongoose](http://mongoosejs.com/)
+
+---
+
+## CHALLENGE
+
+- To create your own user API with express you will need to keep the data somewhere, in this challenge you need to implement a database.
+ 1. Create a new project as you learn here, with the user's API requests setted at app.js
+ 2. Implement any database of any kind you want, you choose, MongoDB, MySQL, SQL, NoSQL, Graph, SQLlite, whatever...
+&nbsp;
+- *TIP:*  for fast development/prototyping I would recommend you to keep on the MEAN Stack and use *MongoDB* through *mongoose*, you can find some *examples below slide 10*
+
+
+
